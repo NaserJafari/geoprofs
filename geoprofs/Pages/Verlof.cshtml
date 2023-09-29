@@ -1,0 +1,35 @@
+﻿@page
+@model VerlofModel
+
+<!-- ... (existing code) -->
+@if (Model.SubmittedEntries != null && Model.SubmittedEntries.Any())
+{
+    <div class="mt-4">
+        <h2>Submitted Verlof Entries:</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Reden</th>
+                    <th>Beschrijving</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var entry in Model.SubmittedEntries)
+                {
+                    <tr>
+                        <td>@entry.Reden</td>
+                        <td>@entry.Beschrijving</td>
+                        <td>@entry.StartDate.ToShortDateString()</td>
+                        <td>@entry.EndDate.ToShortDateString()</td>
+                        <td>@entry.StartTime</td>
+                        <td>@entry.EndTime</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
