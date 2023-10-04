@@ -28,8 +28,8 @@ public class Startup
         });
 
         // Add DbContext configuration
-        services.AddDbContext<YourDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+        //services.AddDbContext<YourDbContext>(options =>
+           // options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
