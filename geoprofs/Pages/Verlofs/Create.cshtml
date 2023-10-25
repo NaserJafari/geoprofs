@@ -1,0 +1,74 @@
+﻿@page
+@model geoprofs.Pages.Verlofs.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Verlof</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Verlof.VerlofReden" class="control-label"></label>
+                <input asp-for="Verlof.VerlofReden" class="form-control" />
+                <span asp-validation-for="Verlof.VerlofReden" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Verlof.VerlofOmschrijving" class="control-label"></label>
+                <input asp-for="Verlof.VerlofOmschrijving" class="form-control" />
+                <span asp-validation-for="Verlof.VerlofOmschrijving" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Verlof.FirstName" class="control-label"></label>
+                <input asp-for="Verlof.FirstName" class="form-control" />
+                <span asp-validation-for="Verlof.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Verlof.LastName" class="control-label"></label>
+                <input asp-for="Verlof.LastName" class="form-control" />
+                <span asp-validation-for="Verlof.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Verlof.BeginVerlof" class="control-label"></label>
+                <input asp-for="Verlof.BeginVerlof" class="form-control" />
+                <span asp-validation-for="Verlof.BeginVerlof" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Verlof.EindVerlof" class="control-label"></label>
+                <input asp-for="Verlof.EindVerlof" class="form-control" />
+                <span asp-validation-for="Verlof.EindVerlof" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Verlof.VerlofResterend" class="control-label"></label>
+                <input asp-for="Verlof.VerlofResterend" class="form-control" />
+                <span asp-validation-for="Verlof.VerlofResterend" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Verlof.rol" class="control-label"></label>
+                <input asp-for="Verlof.rol" class="form-control" />
+                <span asp-validation-for="Verlof.rol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Verlof.VerlofStatus" class="control-label"></label>
+                <input asp-for="Verlof.VerlofStatus" class="form-control" />
+                <span asp-validation-for="Verlof.VerlofStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,84 @@
+﻿@page
+@model geoprofs.Pages.Verlofs.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Verlof[0].VerlofReden)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verlof[0].VerlofOmschrijving)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verlof[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verlof[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verlof[0].BeginVerlof)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verlof[0].EindVerlof)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verlof[0].VerlofResterend)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verlof[0].rol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verlof[0].VerlofStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Verlof) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VerlofReden)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VerlofOmschrijving)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginVerlof)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EindVerlof)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VerlofResterend)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VerlofStatus)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.VerlofId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.VerlofId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.VerlofId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
