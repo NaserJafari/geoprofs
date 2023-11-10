@@ -10,10 +10,42 @@
 <style>
     .red-table {
         background-color: #FFCDD2; /* Red color for denial */
+        border-bottom: 3px solid #FF0000; /* Red border */
     }
 
     .green-table {
         background-color: #C8E6C9; /* Green color for approval */
+        border-bottom: 3px solid #00FF00; /* Green border */
+    }
+
+    /* Added button styling */
+    .action-button-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .action-button {
+        flex: 1;
+        padding: 8px 12px;
+        margin: 4px 2px;
+        text-decoration: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .approve-button {
+        background-color: #4CAF50; /* Green */
+        color: white;
+        border: none;
+        width: 100px;
+    }
+
+    .deny-button {
+        background-color: #f44336; /* Red */
+        color: white;
+        border: none;
+        width: 100px;
     }
 </style>
 
@@ -98,11 +130,12 @@
                     @Html.DisplayFor(modelItem => item.VerlofStatus)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.VerlofId">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.VerlofId">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.VerlofId">Delete</a> |
-                    <a href="#" onclick="approveClicked('@item.VerlofId', event)">Approve</a> |
-                    <a href="#" onclick="denyClicked('@item.VerlofId', event)">Deny</a>
+                    <a asp-page="./Edit" asp-route-id="@item.VerlofId">Edit</a>
+                    <a asp-page="./Details" asp-route-id="@item.VerlofId">Details</a>
+                    <a asp-page="./Delete" asp-route-id="@item.VerlofId">Delete</a>
+                    <br>
+                    <button class="action-button approve-button" onclick="approveClicked('@item.VerlofId', event)">Approve</button>
+                    <button class="action-button deny-button" onclick="denyClicked('@item.VerlofId', event)">Deny</button>
                 </td>
             </tr>
         }
