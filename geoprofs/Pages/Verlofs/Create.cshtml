@@ -59,6 +59,11 @@
                 <span asp-validation-for="Verlof.VerlofStatus" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Verlof.ApproveDeny" class="control-label"></label>
+                <input asp-for="Verlof.ApproveDeny" class="form-control" />
+                <span asp-validation-for="Verlof.ApproveDeny" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>

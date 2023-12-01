@@ -1,0 +1,62 @@
+﻿@page
+@model geoprofs.Pages.Verlofs.ApproveOfDenyVerlofModel
+
+@{
+    ViewData["Title"] = "ApproveOfDenyVerlof";
+}
+
+<h1>ApproveOfDenyVerlof</h1>
+
+<h4>Verlof</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Verlof.VerlofId" />
+            <div class="form-group">
+                <label asp-for="Verlof.ApproveDeny" class="control-label"></label>
+                <select asp-for="Verlof.ApproveDeny" class="form-control">
+                    <option value="0">Approve</option>
+                    <option value="1">Deny</option>
+                </select>
+                <span asp-validation-for="Verlof.ApproveDeny" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Verlof.FirstName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Verlof.LastName" class="form-control" />
+            </div>
+             <div class="form-group">
+                 <input type="hidden" asp-for="Verlof.VerlofOmschrijving" class="form-control" />
+             </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Verlof.VerlofReden" class="form-control" />
+            </div>
+             <div class="form-group">
+                 <input type="hidden" asp-for="Verlof.VerlofResterend" class="form-control" />
+             </div>
+             <div class="form-group">
+                 <input type="hidden" asp-for="Verlof.VerlofStatus" class="form-control" />
+             </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Verlof.rol" class="form-control" />
+            </div>
+            <input type="hidden" asp-for="Verlof.BeginVerlof" />
+            <input type="hidden" asp-for="Verlof.EindVerlof" />
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

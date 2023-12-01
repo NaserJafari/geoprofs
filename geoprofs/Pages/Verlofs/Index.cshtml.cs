@@ -1,25 +1,58 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using geoprofs.Data;
 using geoprofs.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace geoprofs.Pages.Verlofs
 {
     public class IndexModel : PageModel
     {
-        private readonly geoprofs.Data.geoprofsContext _context;
+        private readonly geoprofsContext _context;
 
-        public IndexModel(geoprofs.Data.geoprofsContext context)
+        public IndexModel(geoprofsContext context)
         {
             _context = context;
         }
 
-        public IList<Verlof> Verlof { get;set; } = default!;
+        public List<Verlof> Verlof { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            if (_context.Verlof != null)
+            Verlof = await _context.Verlof.ToListAsync();
+            return Page();
+        }
+
+        public IActionResult OnPostApprove(int id)
+        {
+            UpdateVerlofStatus(id, "Approved");
+            return RedirectToPage("./Index");
+        }
+
+        public IActionResult OnPostDeny(int id)
+        {
+            UpdateVerlofStatus(id, "Denied");
+            return RedirectToPage("./Index");
+        }
+
+        private void UpdateVerlofStatus(int id, string status)
+        {
+            var verlof = _context.Verlof.Find(id);
+            if (verlof != null)
             {
-                Verlof = await _context.Verlof.ToListAsync();
+                if (int.TryParse(status, out int statusValue))
+                {
+                    verlof.VerlofStatus = statusValue;
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    // Handle the case where status is not a valid integer
+                    // For example, log an error or set a default status
+                }
             }
         }
     }
