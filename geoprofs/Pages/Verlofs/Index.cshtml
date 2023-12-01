@@ -134,10 +134,12 @@
                     <a asp-page="./Details" asp-route-id="@item.VerlofId">Details</a>
                     <a asp-page="./Delete" asp-route-id="@item.VerlofId">Delete</a>
                     <br>
-                    <button class="action-button approve-button" onclick="approveClicked('@item.VerlofId', event)">Approve</button>
-                    <button class="action-button deny-button" onclick="denyClicked('@item.VerlofId', event)">Deny</button>
+                    <button class="action-button approve-button" onclick="location.href='@Url.Page("./Index", "OnPostApprove", new { id = item.VerlofId })'">Approve</button>
+                    <button class="action-button deny-button" onclick="location.href='@Url.Page("./Index", "OnPostDeny", new { id = item.VerlofId })'">Deny</button>
+
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
