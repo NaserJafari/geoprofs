@@ -76,16 +76,19 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.VerlofStatus)
                 </td>
-                <td>
-                   @if (item.ApproveDeny == 0)
-                    {
-                        <span>Approved</span>
-                    }
-                    else if (item.ApproveDeny == 1)
-                    {
-                        <span>Denied</span>
-                    }
-                </td>
+                
+                @if (item.ApproveDeny == 0)
+                {
+                    <td class="bg-success text-white">Approved</td>
+                }
+                else if (item.ApproveDeny == 1)
+                {
+                    <td class="bg-danger text-white">Denied</td>
+                }
+                else
+                {
+                    <td class="bg-warning text-white">Nog niks</td>
+                }
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.VerlofId">Edit</a>
                     <a asp-page="./Details" asp-route-id="@item.VerlofId">Details</a>
