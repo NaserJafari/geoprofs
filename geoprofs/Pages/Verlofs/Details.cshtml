@@ -14,9 +14,32 @@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Verlof.VerlofReden)
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Verlof.VerlofReden)
-        </dd>
+        @if (Model.Verlof.VerlofReden == 0)
+        {
+            <dd class="col-sm-10 fw-normal">
+                Ziek
+            </dd>
+        }
+        else if (Model.Verlof.VerlofReden == 1)
+        {
+            <dd class="col-sm-10 fw-normal">
+                Vakantie
+            </dd>
+        }
+        else if (Model.Verlof.VerlofReden == 2)
+        {
+            <dd class="col-sm-10 fw-normal">
+               Dokter
+            </dd>
+        }
+        else
+        {
+            <dt class="col-sm-10 fw-normal">
+                Tandarts
+            </dt>
+        }
+
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Verlof.VerlofOmschrijving)
         </dt>

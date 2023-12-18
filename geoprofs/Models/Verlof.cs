@@ -6,8 +6,7 @@ namespace geoprofs.Models
     {
         public int VerlofId { get; set; }
 
-        [Display(Name = "Verlof Reden")]
-        public int? VerlofRedenId { get; set; }
+        public int? VerlofReden { get; set; }
         public string? VerlofOmschrijving { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
