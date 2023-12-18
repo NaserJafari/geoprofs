@@ -5,8 +5,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<h1>Verlof aanvraag keuring</h1>
 
 <table class="table" id="verlofTable">
     <thead>
@@ -47,11 +46,23 @@
     <tbody>
         @foreach (var item in Model.Verlof)
         {
-        
             <tr id="row-@item.VerlofId">
-                <td>
-                    @Html.DisplayFor(modelItem => item.VerlofReden)
-                </td>
+                @if (item.VerlofReden == 0)
+                {
+                    <td class="">Ziek</td>
+                }
+                else if (item.VerlofReden == 1)
+                {
+                    <td class="">Vakantie</td>
+                }
+                else if (item.VerlofReden == 2)
+                {
+                    <td class="">Dokter</td>
+                }
+                else
+                {
+                    <td class="">Tandarts</td>
+                }
                 <td>
                     @Html.DisplayFor(modelItem => item.VerlofOmschrijving)
                 </td>
@@ -76,28 +87,45 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.VerlofStatus)
                 </td>
-                
-                @if (item.ApproveDeny == 0)
-                {
-                    <td class="bg-success text-white">Approved</td>
+                @{
+                    string statusClass;
+                    string statusText;
+
+                    if (item.ApproveDeny == 0)
+                    {
+                        statusClass = "bg-success text-white";
+                        statusText = "Approved";
+                    }
+                    else if (item.ApproveDeny == 1)
+                    {
+                        statusClass = "bg-danger text-white";
+                        statusText = "Denied";
+                    }
+                    else
+                    {
+                        statusClass = "bg-warning text-white";
+                        statusText = "In verwachting";
+                    }
                 }
-                else if (item.ApproveDeny == 1)
-                {
-                    <td class="bg-danger text-white">Denied</td>
-                }
-                else
-                {
-                    <td class="bg-warning text-white">Nog niks</td>
-                }
+                <td class="@statusClass">@statusText</td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.VerlofId">Edit</a>
                     <a asp-page="./Details" asp-route-id="@item.VerlofId">Details</a>
                     <a asp-page="./ApproveOfDenyVerlof" asp-route-id="@item.VerlofId">Approve or Deny verlof</a>
                     <a asp-page="./Delete" asp-route-id="@item.VerlofId">Delete</a>
                 </td>
-               
             </tr>
-        
         }
     </tbody>
 </table>
+
+
+@section Scripts {
+    <script>
+        // Function to toggle the dropdown
+        function toggleDropdown(element) {
+            var dropdown = $(element).find('select');
+            dropdown.toggle();
+        }
+    </script>
+}
