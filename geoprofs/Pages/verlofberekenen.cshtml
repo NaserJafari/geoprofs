@@ -1,0 +1,23 @@
+﻿@page
+@model geoprofs.Pages.verlofberekenenModel
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verlof Berekenen</title>
+</head>
+<body>
+    <form method="post">
+        <label for="UrenPerWeek">Aantal gewerkte uren per week:</label>
+        <input asp-for="UrenPerWeek" />
+        <br />
+
+        <button type="submit">Bereken Vakantie-uren</button>
+        <br />
+        <p>U heeft recht op @Model.WettelijkeVakantieUren vakantie-uren per jaar.</p>
+        <p>Dat is @Model.BerekenAantalVakantieDagen() dagen vakantie.</p>
+    </form>
+</body>
+</html>
