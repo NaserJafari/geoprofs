@@ -16,7 +16,12 @@
             <input type="hidden" asp-for="Verlof.VerlofId" />
             <div class="form-group">
                 <label asp-for="Verlof.VerlofReden" class="control-label"></label>
-                <input asp-for="Verlof.VerlofReden" class="form-control" />
+                <select asp-for="Verlof.VerlofReden" class="form-control">
+                    <option value="0">Ziek</option>
+                    <option value="1">Vakantie</option>
+                    <option value="2">Dokter</option>
+                    <option value="3">Tandarts</option>
+                </select>
                 <span asp-validation-for="Verlof.VerlofReden" class="text-danger"></span>
             </div>
             <div class="form-group">
