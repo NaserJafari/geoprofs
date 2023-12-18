@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using geoprofs.Data;
 
@@ -11,9 +12,10 @@ using geoprofs.Data;
 namespace geoprofs.Migrations
 {
     [DbContext(typeof(geoprofsContext))]
-    partial class geoprofsContextModelSnapshot : ModelSnapshot
+    [Migration("20231218095501_verlofredenstringnaarint")]
+    partial class verlofredenstringnaarint
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
