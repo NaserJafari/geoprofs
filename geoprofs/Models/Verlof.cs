@@ -2,11 +2,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace geoprofs.Models
 {
-
     public class Verlof
     {
         public int VerlofId { get; set; }
-        public string? VerlofReden { get; set; }
+
+        public int? VerlofReden { get; set; }
         public string? VerlofOmschrijving { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

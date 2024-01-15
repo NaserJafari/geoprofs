@@ -1,0 +1,40 @@
+﻿@page
+@model geoprofs.Pages.PlannerModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Add your styling here */
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin: 20px;
+        }
+
+        .day {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar">
+        @for (int day = 1; day <= 31; day++)
+        {
+            <div class="day" onclick="handleButtonClick(@day)">@day</div>
+        }
+    </div>
+
+    <script>
+        function handleButtonClick(day) {
+            // Handle button click event here
+            alert('Button clicked for day ' + day);
+            // You can replace the alert with your own logic
+        }
+    </script>
+</body>
+</html>
