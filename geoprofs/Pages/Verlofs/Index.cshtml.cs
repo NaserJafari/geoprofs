@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using geoprofs.Data;
 using geoprofs.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace geoprofs.Pages.Verlofs
 {
+    [Authorize(Roles = "Admin,Werknemer,Manager")]
     public class IndexModel : PageModel
     {
         private readonly geoprofsContext _context;
