@@ -1,11 +1,28 @@
 ﻿@page
 @model geoprofs.Pages.Verlofs.IndexModel
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Index";
+    var userName = HttpContextAccessor.HttpContext.User.Identity.Name;
+    var userRole = "Werknemer";
+
+    if (HttpContextAccessor.HttpContext.User.IsInRole("Admin"))
+    {
+        userRole = "Admin";
+    }
+    else if (HttpContextAccessor.HttpContext.User.IsInRole("Werknemer"))
+    {
+        userRole = "Werknemer";
+    }
+    else if (HttpContextAccessor.HttpContext.User.IsInRole("Manager"))
+    {
+        userRole = "Manager";
+    }
 }
 
 <h1>Verlof aanvraag keuring</h1>
+<h4>Welkom, @userName! (Role: @userRole)</h4>
 
 <table class="table" id="verlofTable">
     <thead>

@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace geoprofs.Pages.Verlofs
 {
-    [Authorize]
+    [Authorize(Roles = "Werknemer,Manager")]
     public class CreateModel : PageModel
     {
         private readonly geoprofs.Data.geoprofsContext _context;

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace geoprofs.Pages.Verlofs
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Werknemer,Manager")]
     public class IndexModel : PageModel
     {
         private readonly geoprofsContext _context;

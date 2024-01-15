@@ -8,6 +8,7 @@ builder.Services.AddDbContext<geoprofsContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<geoprofsContext>();
 
 // Add services to the container.
