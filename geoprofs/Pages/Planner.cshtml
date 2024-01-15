@@ -9,7 +9,7 @@
         .calendar {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
+            gap: 20px; /* Increased gap for more space between days */
             margin: 20px;
         }
 
@@ -18,22 +18,67 @@
             padding: 10px;
             text-align: center;
             cursor: pointer;
+            transition: transform 0.2s ease-in-out; /* Add transition for smooth scaling */
+        }
+
+            .day.selected {
+                transform: scale(1.1); /* Slightly bigger size for selected days */
+                background-color: lawngreen;
+            }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+
+        .vacation-days-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .vacation-days-label {
+            margin-right: 10px;
+        }
+
+        .vacation-days-input {
+            width: 50px; /* Adjust the width as needed */
+        }
+
+        .month-text {
+            margin: 0; /* Remove default margin */
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <div class="vacation-days-container">
+            <span class="vacation-days-label">Aantal vakantie dagen:</span>
+            <input class="vacation-days-input" type="text" id="vacationDaysInput" />
+        </div>
+        <p class="month-text">Maand: @DateTime.Now.ToString("MMMM")</p>
+    </div>
+
     <div class="calendar">
-        @for (int day = 1; day <= 31; day++)
+        @for (int day = 1; day <= DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month); day++)
         {
-            <div class="day" onclick="handleButtonClick(@day)">@day</div>
+            <div class="day" onclick="handleDayClick(this, @day)">@day</div>
         }
     </div>
 
     <script>
-        function handleButtonClick(day) {
+        function handleDayClick(element, day) {
+            // Toggle the 'selected' class on click
+            element.classList.toggle('selected');
+
             // Handle button click event here
-            alert('Button clicked for day ' + day);
-            // You can replace the alert with your own logic
+            var selectedDays = document.querySelectorAll('.day.selected');
+            var vacationDays = document.getElementById('vacationDaysInput');
+            vacationDays.value = selectedDays.length;
+
+            // You can perform additional logic with selectedDays array if needed
         }
     </script>
 </body>
