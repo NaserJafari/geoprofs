@@ -19,8 +19,6 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @if (User.IsInRole("werknemer"))
-                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
                             </li>
@@ -30,17 +28,9 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Verlofs/Index">Verlof Inzien (M)</a>
                             </li>
-                        }
-                        else
-                        {
-                            @if (!User.IsInRole("werknemer"))
-                            {
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-page="/Verlofs/Index">Verlof Inzien (M)</a>
                                 </li>
-                            }
-                        }
-
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Logout">Logout</a>
                         </li>
