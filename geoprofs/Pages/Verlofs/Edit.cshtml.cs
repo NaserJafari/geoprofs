@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using geoprofs.Data;
 using geoprofs.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace geoprofs.Pages.Verlofs
 {
+    [Authorize(Roles = "Werknemer,Manager")]
     public class EditModel : PageModel
     {
         private readonly geoprofs.Data.geoprofsContext _context;

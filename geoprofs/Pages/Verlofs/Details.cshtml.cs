@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using geoprofs.Data;
 using geoprofs.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace geoprofs.Pages.Verlofs
 {
+    [Authorize]
     public class DetailsModel : PageModel
     {
         private readonly geoprofs.Data.geoprofsContext _context;

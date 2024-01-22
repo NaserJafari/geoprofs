@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using geoprofs.Data;
 
@@ -11,9 +12,10 @@ using geoprofs.Data;
 namespace geoprofs.Migrations
 {
     [DbContext(typeof(geoprofsContext))]
-    partial class geoprofsContextModelSnapshot : ModelSnapshot
+    [Migration("20231208083937_rolesUsers")]
+    partial class rolesUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,20 +50,11 @@ namespace geoprofs.Migrations
                     b.Property<string>("VerlofOmschrijving")
                         .HasColumnType("nvarchar(max)");
 
-
                     b.Property<string>("VerlofReden")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("VerlofResterend")
                         .HasColumnType("int");
-
-
-                    b.Property<int?>("VerlofReden")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("VerlofResterend")
-                        .HasColumnType("int");
-
 
                     b.Property<int?>("VerlofStatus")
                         .HasColumnType("int");
